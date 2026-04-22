@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Boost Your Fluency — Home</title>
+<meta name="theme-color" content="#ffffff">
+<style>
+  :root{
+    /* Force light color scheme for form controls, etc. */
+    color-scheme: light only;
+
+    /* Page background (set to white) */
+    --bg-grad-1:#ffffff;
+    --bg-grad-2:#ffffff;
+
+    /* Optional tile backdrop color shown while images load */
+    --tile-fallback:#f7a07a;
+
+    --tile-radius:20px;
+    --tile-shadow:0 10px 26px rgba(0,0,0,.12);
+    --tile-border:1px solid rgba(0,0,0,.08);
+
+    --grid-gap:18px;
+    --tile-min:210px;
+    --maxw:1100px;
+
+    /* Main text color on white */
+    --text:#0f172a; /* slate-900-ish */
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:system-ui,-apple-system,Segoe UI,Inter,Roboto,Helvetica,Arial,sans-serif;
+    color:var(--text);
+    /* Solid white background (replace prior dark gradient) */
+    background:#ffffff;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:20px 14px 28px}
+
+  /* Header (title image only; logo block removed) */
+  header{
+    display:flex;align-items:center;gap:14px;justify-content:center;
+    flex-wrap:wrap;margin:18px 0 8px
+  }
+
+  /* Title image: scales responsively, stays crisp */
+  .title-img{
+    display:block;
+    max-width:min(100%, 900px);
+    height:auto;
+    max-height:clamp(40px, 10vw, 110px); /* prevents it from getting too tall */
+  }
+  .title-wrap{min-height:clamp(40px, 10vw, 110px)}
+
+  /* Hide the text fallback visually but keep it for accessibility/SEO */
+  .visually-hidden{
+    position:absolute!important;width:1px;height:1px;margin:-1px;border:0;padding:0;
+    clip:rect(0 0 0 0);overflow:hidden;white-space:nowrap
+  }
+
+  /* Grid */
+  .grid{
+    margin-top:14px;
+    display:grid; gap:var(--grid-gap);
+    grid-template-columns:repeat(auto-fill,minmax(var(--tile-min),1fr));
+  }
+
+  /* Tile: image-only, full-bleed */
+  .tile{
+    position:relative;
+    display:block;
+    border-radius:var(--tile-radius);
+    box-shadow:var(--tile-shadow);
+    border:var(--tile-border);
+    overflow:hidden;
+    background:var(--tile-fallback);
+    min-height:170px;
+    cursor:pointer;
+    transition:transform .12s ease, filter .12s ease;
+  }
+  .tile:hover{ transform:translateY(-2px); filter:saturate(1.06) }
+  /* Use a visible focus ring on white */
+  .tile:focus-visible{ outline:3px solid #0b63f6; outline-offset:2px }
+
+  .tile img{
+    width:100%;
+    height:100%;
+    object-fit:cover;     /* fills the frame, may crop a little */
+    display:block;
+  }
+
+  /* Optional subtle top gloss like your cards (remove if undesired) */
+  .tile::after{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,0) 40%);
+    pointer-events:none;
+  }
+
+  /* Darken footer text a bit for readability on white */
+  footer{color:#475569;text-align:center;margin:18px 0 24px}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- Header with title image only (no separate logo block) -->
+    <header>
+      <div class="title-wrap" aria-label="Boost Your Fluency">
+        <img
+          class="title-img"
+          src="images/title.png"
+          srcset="images/title.png 1x, images/title@2x.png 2x"
+          alt="Boost Your Fluency"
+          width="1200" height="260"
+          loading="eager" decoding="async"
+        >
+        <!-- Accessible text fallback (not visible) -->
+        <h1 class="visually-hidden">Boost Your Fluency</h1>
+      </div>
+    </header>
+
+    <section class="grid" id="grid" aria-label="Modules grid">
+      <!-- Tiles will be injected below -->
+    </section>
+
+    <footer>© 2026 • For practice use.</footer>
+  </div>
+
+<script>
+/* ======= Image upload instructions =======
+Folder structure (create if missing):
+- images/title.png (+ images/title@2x.png) -> your title/wordmark image (includes logo)
+- images/modules/                       -> one image per module (listed below)
+
+Module image guidelines:
+- Format: SVG (preferred) or PNG (transparent background ideal)
+- Size: at least 512×512 (larger is fine; will downscale)
+- Tiles use "object-fit: cover" so images fill the frame edge-to-edge.
+  Some edge cropping is expected. Prefer centered artwork with minimal outer padding.
+
+If you prefer no cropping:
+- Change the CSS rule ".tile img { object-fit: cover; }" to:
+  .tile img { object-fit: contain; background:#fff; }
+
+File names you can drop into images/modules/:
+animals.png, art.png, apps.png, books.png, broken_promises.png,
+challenges.png, clothes.png, confidence.png, crime.png, education.png,
+friends_family.png, food.png, happiness.png, health.png, holidays.png,
+intelligence.png, media.png, nature.png, politeness.png, remembering.png
+=========================================== */
+
+const modules = [
+  {k:'animals',          n:'Animals',           img:'animals.png'},
+  {k:'art',              n:'Art',               img:'art.png'},
+  {k:'apps',             n:'Apps',              img:'apps.png'},
+  {k:'books',            n:'Books',             img:'books.png'},
+
+  {k:'broken_promises',  n:'Broken Promises',   img:'broken_promises.png'},
+  {k:'challenges',       n:'Challenges',        img:'challenges.png'},
+  {k:'clothes',          n:'Clothes',           img:'clothes.png'},
+  {k:'confidence',       n:'Confidence',        img:'confidence.png'},
+
+  {k:'crime',            n:'Crime',             img:'crime.png'},
+  {k:'education',        n:'Education',         img:'education.png'},
+  {k:'friends_family',   n:'Friends & Family',  img:'friends_family.png'},
+  {k:'food',             n:'Food',              img:'food.png'},
+
+  {k:'happiness',        n:'Happiness',         img:'happiness.png'},
+  {k:'health',           n:'Health',            img:'health.png'},
+  {k:'holidays',         n:'Holidays',          img:'holidays.png'},
+  {k:'intelligence',     n:'Intelligence',      img:'intelligence.png'},
+
+  {k:'media',            n:'Media',             img:'media.png'},
+  {k:'nature',           n:'Nature',            img:'nature.png'},
+  {k:'politeness',       n:'Politeness',        img:'politeness.png'},
+  {k:'remembering',      n:'Remembering',       img:'remembering.png'}
+];
+
+const grid = document.getElementById('grid');
+modules.forEach((m)=>{
+  const a  = document.createElement('a');
+  a.className = 'tile';
+  a.href = `module.html?topic=${encodeURIComponent(m.k)}`;
+  a.setAttribute('aria-label', m.n); // for screen readers only
+  a.innerHTML = `<img src="images/modules/${m.img}" alt="" loading="lazy" decoding="async">`;
+  grid.appendChild(a);
+});
+</script>
+</body>
+</html>
