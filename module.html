@@ -26,6 +26,109 @@ const topicNames = {
   'politeness': 'Politeness',
   'remembering': 'Remembering'
 };
+// questions.json or embed in module.html
+const QUESTIONS = {
+  animals: {
+    p1: ['Do you have a pet?','What is a popular pet in your country?','Have you ever seen a wild animal?'],
+    p2: ['Describe an interesting animal.'],
+    p3: ['Should the government protect wild animals?','What are the advantages and disadvantages of zoos?']
+  },
+  art: {
+    p1: ['What kind of art do you enjoy?','Do you have any paintings on your walls?','Did you learn art at school?','Can you draw or paint?','Do you like visiting museums or galleries?','Do you often take photos?','Do you often take selfies?'],
+    p2: ['Describe a work of art you like. (What it is / where you saw it/what it shows / why you like it.)','Describe a museum or gallery you have visited. (What it is / where it is located /what can be seen there / why you liked it.)','Describe someone creative you know. (Who it is / how you know them /how they are creative / why you enjoy knowing this person.)'],
+    p3: ['What role does art play in society?','Do you think photos will one day replace paintings?','Do you think people today are less creative than in the past due to advanced technology?','Why do people take selfies?','What role do museums and galleries play?','How can children benefit from art?','Should the government support the arts?','What's the difference between art and the arts?','What makes a good painting?','Should art be censored?','What is the aim of art?','Which of the performing arts do you enjoy most?']
+  },
+  apps: {
+    p1: ['Do you often use apps?','What are the most popular apps in your country?','Would you ever spend money on an app?'],
+    p2: ['Describe a useful app.'],
+    p3: ['Are apps useful or a distraction?','How do you think apps will develop in the future?','Can apps help us improve our health? How?']
+  },
+  books: {
+    p1: ['Do you like reading books?','Do you ever read e‑books?','What other reading materials do you enjoy?'],
+    p2: ['Describe a book you recently read.','Describe a childhood story you enjoyed.'],
+    p3: ['Do you think paper books will ever disappear?','What do children gain from reading books?']
+  },
+  broken_promises: {
+    p1: ['When was the last time you made a promise and didn’t keep it?','Do you think it is important to keep your promises?','Why are some people unreliable?'],
+    p2: ['Describe a time you made a mistake.'],
+    p3: ['Do you think parents should enforce strict rules on teenagers?','How can we reduce crime in society?']
+  },
+  challenges: {
+    p1: ['When was the last time you tried something new?','Do you enjoy stepping out of your comfort zone?','What did you find most challenging at school?'],
+    p2: ['Describe a tough challenge you have faced.'],
+    p3: ['Why do some people relish a challenge?','Should schools be more challenging for children?']
+  },
+  clothes: {
+    p1: ['What types of clothes do you wear most?','Did you wear a school uniform as a child?','Do you follow fashion?'],
+    p2: ['Describe an item of clothing you most enjoy wearing.','Describe a useful bag you own.'],
+    p3: ['Do you think fashion is important?','Do you think traditional clothes will one day disappear?']
+  },
+  confidence: {
+    p1: ['Would you describe yourself as a confident person?','Were you a confident child?','What do you do to build confidence?'],
+    p2: ['Describe a person you know who is confident.'],
+    p3: ['Why is confidence important?','Can someone ever be over‑confident?','Does social media make people more or less confident?']
+  },
+  crime: {
+    p1: ['What is the biggest mistake you’ve ever made?','Did your school have strict rules?','Is there a lot of crime where you live?'],
+    p2: ['Describe a good law.'],
+    p3: ['Why do people commit crime?','Is prison the best punishment?','How can people stay safe online?']
+  },
+  education: {
+    p1: ['Did you enjoy school as a child?','What was your favourite subject?','Are you currently learning anything new?'],
+    p2: ['Describe a subject you enjoyed at school.','Describe a teacher you admired.'],
+    p3: ['Has education in schools changed in the last few decades?','What makes a good teacher?','How has technology changed education?']
+  },
+  friends_family: {
+    p1: ['Who are you closest to in your family?','Do you have many friends?','Why is it important to have a social life?'],
+    p2: ['Describe your best friend at school.','Describe a memorable family holiday.'],
+    p3: ['Why is family important?','Do grandparents still have a role today?','Is it safe to make new friends online?']
+  },
+  food: {
+    p1: ['What’s your favourite meal of the day?','Do you enjoy cooking?','Do you often eat out?'],
+    p2: ['Describe a restaurant you like.','Describe your favourite dish.'],
+    p3: ['Do you think food plays an important role in society?','Why is obesity a growing problem?','What is a balanced diet?']
+  },
+  happiness: {
+    p1: ['Do you consider yourself a happy person?','What makes you happy?','Do you often laugh out loud?'],
+    p2: ['Describe a happy event you remember.'],
+    p3: ['Do you think successful people are happier?','Does money contribute towards happiness?']
+  },
+  health: {
+    p1: ['How do you keep healthy?','Do you have a healthy lifestyle?','Do you ever do exercise?'],
+    p2: ['Describe a healthy activity.','Describe someone you think is very healthy.'],
+    p3: ['What health problems do many people face today?','How can people be encouraged to be healthier?','Do you think mental health is important?']
+  },
+  holidays: {
+    p1: ['Did you often go on holiday as a child?','Do you think holidays are important?','When did you last go on holiday?'],
+    p2: ['Describe a recent holiday you had.','Describe a city you would like to visit.'],
+    p3: ['How will holidays change in the future?','What are the pros and cons of tourism?']
+  },
+  intelligence: {
+    p1: ['Are you currently learning anything new?'],
+    p2: ['Describe an intelligent person you know.'],
+    p3: ['Are people born intelligent or can they become intelligent?','Is emotional intelligence important?']
+  },
+  media: {
+    p1: ['Do you often watch films?','How do you keep up with the news?','Do you often post on social media?'],
+    p2: ['Describe your favourite film.','Describe your favourite social media site or app.'],
+    p3: ['Why do people follow the news?','How has social media changed the way we receive news?','Do you think historical dramas should be factually correct?']
+  },
+  nature: {
+    p1: ['Do you spend much time in nature?','Do you have many plants at home?','Are there many parks where you live?'],
+    p2: ['Describe a place of natural beauty in your country.','Describe an outdoor activity you enjoy.'],
+    p3: ['Should the government protect rural areas more?','How do people damage our planet?','Should cities build more green spaces?']
+  },
+  politeness: {
+    p1: ['How do people show politeness in your country?','Are children encouraged to be polite to older people?','Why are people sometimes rude?'],
+    p2: ['Describe someone you know who is very polite.'],
+    p3: ['Why are people polite to strangers?','Is politeness less important today than in the past?']
+  },
+  remembering: {
+    p1: ['Do you have a good memory?','Do you often forget things? What kind of things?','Have you ever kept a diary?', 'Do you use calendars?', 'Are there any apps you use that help you remember things?', 'What can people do to improve their memory?'],
+    p2: ['Describe a memorable experience.','Describe a childhood memory.'],
+    p3: ['Why do older people struggle with their memory?','Why do people sometimes forget things?','Why do some people have better memories than others?','What can people do to improve their memory?','What kinds of things do people often memorise?','Should children be taught to memorise things?','What types of things should children learn by heart?','Is it important to remember certain things from the past?','Is it important to learn the history of one's country?','Is it easier to memorise words or picture?','Does technology help us remember things or does it make it harder for us to remember things naturally?']
+  }
+};
 
 // Update page title
 document.title = `Module — ${topicNames[topic]}`;
